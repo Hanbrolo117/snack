@@ -1,0 +1,74 @@
+name: snack
+description: Share your "snack" with your significant other
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  file_picker: ^2.1.5+1
+  video_player: ^1.0.1
+  flutter_redux: ^0.7.0
+  redux: ^4.0.0+3
+  redux_thunk: ^0.3.0
+  carousel_slider: ^3.0.0
+  freezed_annotation: ^0.12.0
+  json_serializable: ^3.5.1
+  meta: ^1.2.4
+  http: ^0.12.2
+  redux_logging: ^0.4.0
+  uuid: ^2.2.2
+  image_picker: ^0.6.7+22
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  freezed: ^0.12.7
+  build_runner: ^1.11.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/taco-24.png
+    - assets/images/avocado-24.png
+    - assets/images/bread-24.png
+    - assets/images/chocolate-bar-24.png
+    - assets/images/cola-24.png
+    - assets/images/hamburger-24.png
+    - assets/images/mulled-wine-24.png
+    - assets/images/nachos-24.png
+    - assets/images/pizza-24.png
+    - assets/images/salad-24.png
+    - assets/images/steak-24.png
+    - assets/images/sunny-side-up-eggs-24.png
+    - assets/images/sample.mp4
+  fonts:
+    - family: Harvyst
+      fonts:
+        - asset: assets/fonts/Harvyst.ttf
+    - family: FruityStories
+      fonts:
+        - asset: assets/fonts/FruityStories.ttf
