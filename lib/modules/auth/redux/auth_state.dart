@@ -5,5 +5,9 @@ part 'auth_state.freezed.dart';
 
 @freezed
 abstract class AuthState with _$AuthState {
-  factory AuthState({String jwt, String signInError}) = _AuthState;
+  factory AuthState({
+    String jwt,
+    String signInError,
+    @Default(true) bool canUseFingerPrint,
+  }) = _AuthState;
 }

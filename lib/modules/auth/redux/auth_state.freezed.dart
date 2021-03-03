@@ -14,10 +14,12 @@ class _$AuthStateTearOff {
   const _$AuthStateTearOff();
 
 // ignore: unused_element
-  _AuthState call({String jwt, String signInError}) {
+  _AuthState call(
+      {String jwt, String signInError, bool canUseFingerPrint = true}) {
     return _AuthState(
       jwt: jwt,
       signInError: signInError,
+      canUseFingerPrint: canUseFingerPrint,
     );
   }
 }
@@ -30,6 +32,7 @@ const $AuthState = _$AuthStateTearOff();
 mixin _$AuthState {
   String get jwt;
   String get signInError;
+  bool get canUseFingerPrint;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith;
@@ -39,7 +42,7 @@ mixin _$AuthState {
 abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res>;
-  $Res call({String jwt, String signInError});
+  $Res call({String jwt, String signInError, bool canUseFingerPrint});
 }
 
 /// @nodoc
@@ -54,11 +57,15 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
   $Res call({
     Object jwt = freezed,
     Object signInError = freezed,
+    Object canUseFingerPrint = freezed,
   }) {
     return _then(_value.copyWith(
       jwt: jwt == freezed ? _value.jwt : jwt as String,
       signInError:
           signInError == freezed ? _value.signInError : signInError as String,
+      canUseFingerPrint: canUseFingerPrint == freezed
+          ? _value.canUseFingerPrint
+          : canUseFingerPrint as bool,
     ));
   }
 }
@@ -69,7 +76,7 @@ abstract class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
           _AuthState value, $Res Function(_AuthState) then) =
       __$AuthStateCopyWithImpl<$Res>;
   @override
-  $Res call({String jwt, String signInError});
+  $Res call({String jwt, String signInError, bool canUseFingerPrint});
 }
 
 /// @nodoc
@@ -85,27 +92,35 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
   $Res call({
     Object jwt = freezed,
     Object signInError = freezed,
+    Object canUseFingerPrint = freezed,
   }) {
     return _then(_AuthState(
       jwt: jwt == freezed ? _value.jwt : jwt as String,
       signInError:
           signInError == freezed ? _value.signInError : signInError as String,
+      canUseFingerPrint: canUseFingerPrint == freezed
+          ? _value.canUseFingerPrint
+          : canUseFingerPrint as bool,
     ));
   }
 }
 
 /// @nodoc
 class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
-  _$_AuthState({this.jwt, this.signInError});
+  _$_AuthState({this.jwt, this.signInError, this.canUseFingerPrint = true})
+      : assert(canUseFingerPrint != null);
 
   @override
   final String jwt;
   @override
   final String signInError;
+  @JsonKey(defaultValue: true)
+  @override
+  final bool canUseFingerPrint;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthState(jwt: $jwt, signInError: $signInError)';
+    return 'AuthState(jwt: $jwt, signInError: $signInError, canUseFingerPrint: $canUseFingerPrint)';
   }
 
   @override
@@ -114,7 +129,8 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
     properties
       ..add(DiagnosticsProperty('type', 'AuthState'))
       ..add(DiagnosticsProperty('jwt', jwt))
-      ..add(DiagnosticsProperty('signInError', signInError));
+      ..add(DiagnosticsProperty('signInError', signInError))
+      ..add(DiagnosticsProperty('canUseFingerPrint', canUseFingerPrint));
   }
 
   @override
@@ -125,14 +141,18 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
                 const DeepCollectionEquality().equals(other.jwt, jwt)) &&
             (identical(other.signInError, signInError) ||
                 const DeepCollectionEquality()
-                    .equals(other.signInError, signInError)));
+                    .equals(other.signInError, signInError)) &&
+            (identical(other.canUseFingerPrint, canUseFingerPrint) ||
+                const DeepCollectionEquality()
+                    .equals(other.canUseFingerPrint, canUseFingerPrint)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(jwt) ^
-      const DeepCollectionEquality().hash(signInError);
+      const DeepCollectionEquality().hash(signInError) ^
+      const DeepCollectionEquality().hash(canUseFingerPrint);
 
   @JsonKey(ignore: true)
   @override
@@ -141,12 +161,15 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
 }
 
 abstract class _AuthState implements AuthState {
-  factory _AuthState({String jwt, String signInError}) = _$_AuthState;
+  factory _AuthState({String jwt, String signInError, bool canUseFingerPrint}) =
+      _$_AuthState;
 
   @override
   String get jwt;
   @override
   String get signInError;
+  @override
+  bool get canUseFingerPrint;
   @override
   @JsonKey(ignore: true)
   _$AuthStateCopyWith<_AuthState> get copyWith;

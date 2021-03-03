@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:video_player/video_player.dart';
 
-
+/// ---------- WIP ---------- \\\
 class CreatePostView extends StatefulWidget {
   @override
   _CreatePostViewState createState() => _CreatePostViewState();
@@ -28,12 +28,13 @@ class _CreatePostViewState extends State<CreatePostView> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _buildMediaViewer(),
-        _buildButtons(),
-      ],
-    );
+    return Text('Post View');
+    // Column(
+    //   children: [
+    //     _buildMediaViewer(),
+    //     _buildButtons(),
+    //   ],
+    // );
   }
 
   Widget _buildButtons() {
