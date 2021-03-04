@@ -2,7 +2,7 @@
 A demo Flutter social app that allows posts of:
 - single image, gif, or video
 - collection of any combination (up to 10) of images, gifs, or videos.
-- Auth using fingerprint or username password (username + password bypassed and only works with a demo throwaway django server)
+- Auth using fingerprint or username password (username + password bypassed and only works with a demo express js server)
 
 ### View Posts Demo
 
