@@ -16,7 +16,7 @@ class SignInPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
 
     // Draw Background
-    var backgroundPaint = Paint()..color = SnackAppColors.springGreen;
+    var backgroundPaint = Paint()..color = SnackAppColors.amagranth;
     canvas.drawRect(ui.Rect.fromCenter(center: Offset(size.width/2, size.height/2), width: size.width, height: size.height), backgroundPaint);
 
     // Update each animated image.
