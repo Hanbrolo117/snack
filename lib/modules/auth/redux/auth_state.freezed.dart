@@ -14,12 +14,11 @@ class _$AuthStateTearOff {
   const _$AuthStateTearOff();
 
 // ignore: unused_element
-  _AuthState call(
-      {String jwt, String signInError, bool canUseFingerPrint = true}) {
+  _AuthState call({String jwt, String signInError, Biometrics biometrics}) {
     return _AuthState(
       jwt: jwt,
       signInError: signInError,
-      canUseFingerPrint: canUseFingerPrint,
+      biometrics: biometrics,
     );
   }
 }
@@ -32,7 +31,7 @@ const $AuthState = _$AuthStateTearOff();
 mixin _$AuthState {
   String get jwt;
   String get signInError;
-  bool get canUseFingerPrint;
+  Biometrics get biometrics;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith;
@@ -42,7 +41,9 @@ mixin _$AuthState {
 abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res>;
-  $Res call({String jwt, String signInError, bool canUseFingerPrint});
+  $Res call({String jwt, String signInError, Biometrics biometrics});
+
+  $BiometricsCopyWith<$Res> get biometrics;
 }
 
 /// @nodoc
@@ -57,16 +58,25 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
   $Res call({
     Object jwt = freezed,
     Object signInError = freezed,
-    Object canUseFingerPrint = freezed,
+    Object biometrics = freezed,
   }) {
     return _then(_value.copyWith(
       jwt: jwt == freezed ? _value.jwt : jwt as String,
       signInError:
           signInError == freezed ? _value.signInError : signInError as String,
-      canUseFingerPrint: canUseFingerPrint == freezed
-          ? _value.canUseFingerPrint
-          : canUseFingerPrint as bool,
+      biometrics:
+          biometrics == freezed ? _value.biometrics : biometrics as Biometrics,
     ));
+  }
+
+  @override
+  $BiometricsCopyWith<$Res> get biometrics {
+    if (_value.biometrics == null) {
+      return null;
+    }
+    return $BiometricsCopyWith<$Res>(_value.biometrics, (value) {
+      return _then(_value.copyWith(biometrics: value));
+    });
   }
 }
 
@@ -76,7 +86,10 @@ abstract class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
           _AuthState value, $Res Function(_AuthState) then) =
       __$AuthStateCopyWithImpl<$Res>;
   @override
-  $Res call({String jwt, String signInError, bool canUseFingerPrint});
+  $Res call({String jwt, String signInError, Biometrics biometrics});
+
+  @override
+  $BiometricsCopyWith<$Res> get biometrics;
 }
 
 /// @nodoc
@@ -92,35 +105,32 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
   $Res call({
     Object jwt = freezed,
     Object signInError = freezed,
-    Object canUseFingerPrint = freezed,
+    Object biometrics = freezed,
   }) {
     return _then(_AuthState(
       jwt: jwt == freezed ? _value.jwt : jwt as String,
       signInError:
           signInError == freezed ? _value.signInError : signInError as String,
-      canUseFingerPrint: canUseFingerPrint == freezed
-          ? _value.canUseFingerPrint
-          : canUseFingerPrint as bool,
+      biometrics:
+          biometrics == freezed ? _value.biometrics : biometrics as Biometrics,
     ));
   }
 }
 
 /// @nodoc
 class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
-  _$_AuthState({this.jwt, this.signInError, this.canUseFingerPrint = true})
-      : assert(canUseFingerPrint != null);
+  _$_AuthState({this.jwt, this.signInError, this.biometrics});
 
   @override
   final String jwt;
   @override
   final String signInError;
-  @JsonKey(defaultValue: true)
   @override
-  final bool canUseFingerPrint;
+  final Biometrics biometrics;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthState(jwt: $jwt, signInError: $signInError, canUseFingerPrint: $canUseFingerPrint)';
+    return 'AuthState(jwt: $jwt, signInError: $signInError, biometrics: $biometrics)';
   }
 
   @override
@@ -130,7 +140,7 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
       ..add(DiagnosticsProperty('type', 'AuthState'))
       ..add(DiagnosticsProperty('jwt', jwt))
       ..add(DiagnosticsProperty('signInError', signInError))
-      ..add(DiagnosticsProperty('canUseFingerPrint', canUseFingerPrint));
+      ..add(DiagnosticsProperty('biometrics', biometrics));
   }
 
   @override
@@ -142,9 +152,9 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
             (identical(other.signInError, signInError) ||
                 const DeepCollectionEquality()
                     .equals(other.signInError, signInError)) &&
-            (identical(other.canUseFingerPrint, canUseFingerPrint) ||
+            (identical(other.biometrics, biometrics) ||
                 const DeepCollectionEquality()
-                    .equals(other.canUseFingerPrint, canUseFingerPrint)));
+                    .equals(other.biometrics, biometrics)));
   }
 
   @override
@@ -152,7 +162,7 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(jwt) ^
       const DeepCollectionEquality().hash(signInError) ^
-      const DeepCollectionEquality().hash(canUseFingerPrint);
+      const DeepCollectionEquality().hash(biometrics);
 
   @JsonKey(ignore: true)
   @override
@@ -161,7 +171,7 @@ class _$_AuthState with DiagnosticableTreeMixin implements _AuthState {
 }
 
 abstract class _AuthState implements AuthState {
-  factory _AuthState({String jwt, String signInError, bool canUseFingerPrint}) =
+  factory _AuthState({String jwt, String signInError, Biometrics biometrics}) =
       _$_AuthState;
 
   @override
@@ -169,7 +179,7 @@ abstract class _AuthState implements AuthState {
   @override
   String get signInError;
   @override
-  bool get canUseFingerPrint;
+  Biometrics get biometrics;
   @override
   @JsonKey(ignore: true)
   _$AuthStateCopyWith<_AuthState> get copyWith;

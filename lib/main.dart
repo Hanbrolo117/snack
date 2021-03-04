@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:snack/models/snack_colors.dart';
+import 'package:snack/modules/auth/models/biometrics.dart';
+import 'package:snack/modules/auth/redux/auth_actions.dart';
 import 'package:snack/modules/auth/redux/auth_middleware.dart';
 import 'package:snack/modules/auth/redux/auth_reducer.dart';
 import 'package:snack/modules/posts/redux/middleware/posts_middleware.dart';
@@ -16,21 +19,31 @@ import 'package:redux/redux.dart';
 import 'models/constants.dart';
 
 void main() {
-  runApp(MyApp());
+
+  final auth = LocalAuthentication();
+
+  final store = Store<SnackAppState>(
+    combineReducers([authReducer, routeReducer, postReducer]),
+    initialState: SnackAppState(
+      authState: AuthState(biometrics: Biometrics()),
+      routeState: RouteState(),
+      postState: PostState(),
+    ),
+    middleware: [AuthMiddleware(localAuth: auth), PostMiddleware()],
+  );
+
+
+  runApp(MyApp(store));
+  store.dispatch(AuthThunkActions.checkBioAuthAvailability());
 }
 
 class MyApp extends StatelessWidget {
   static const buttonStyle = TextStyle(fontFamily: "FruityStories", fontWeight: FontWeight.bold, color: SnackAppColors.amagranth);
 
-  final store = Store<SnackAppState>(
-    combineReducers([authReducer, routeReducer, postReducer]),
-    initialState: SnackAppState(
-      authState: AuthState(),
-      routeState: RouteState(),
-      postState: PostState(),
-    ),
-    middleware: [AuthMiddleware(), PostMiddleware()],
-  );
+  MyApp(this.store);
+
+  final Store<SnackAppState> store;
+
 
   // This widget is the root of your application.
   @override

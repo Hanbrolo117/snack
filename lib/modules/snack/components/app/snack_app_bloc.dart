@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:snack/modules/auth/redux/auth_actions.dart';
 import 'package:snack/modules/routing/redux/route_actions.dart';
 import 'package:snack/models/routing.dart';
 import 'package:snack/modules/snack/redux/snack_app_state.dart';
@@ -17,10 +18,14 @@ abstract class SnackAppBloc implements _$SnackAppBloc {
     @required bool isUnauthedView,
     @required bool isPostFullscreen,
   }) = _SnackAppBloc;
-  
+
+  bool get hasBioAuth => store.state.authState.biometrics.hasBiometrics;
+
   void updateView(SnackAppView newView) {
     store.dispatch(RouteActions.updateView(newView: newView));
   }
 
-  void signOut() {}
+  void bioSignIn() {
+    store.dispatch(AuthThunkActions.bioSignIn());
+  }
 }

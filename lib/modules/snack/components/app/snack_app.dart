@@ -75,7 +75,22 @@ class _SnackAppState extends State<SnackApp> {
         child: _buildView(bloc.currentView),
       ),
       bottomNavigationBar: _buildBottomNavigation(bloc), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: _buildFloatingActionButton(bloc),
     );
+  }
+
+  Widget _buildFloatingActionButton(SnackAppBloc bloc) {
+    if (bloc.isUnauthedView && bloc.hasBioAuth) {
+      return FloatingActionButton(
+        backgroundColor: Colors.white,
+        child: Icon(
+          Icons.fingerprint_rounded,
+          color: SnackAppColors.springGreen,
+        ),
+        onPressed: () => bloc.bioSignIn(),
+      );
+    }
+    return null;
   }
 
   Widget _buildAppBar(BuildContext context, SnackAppBloc bloc) {

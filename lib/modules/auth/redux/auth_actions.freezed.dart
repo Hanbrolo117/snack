@@ -26,6 +26,13 @@ class _$AuthActionsTearOff {
       errorMsg: errorMsg,
     );
   }
+
+// ignore: unused_element
+  UpdateBioAuthAction updateBioAuth({bool hasBioAuth}) {
+    return UpdateBioAuthAction(
+      hasBioAuth: hasBioAuth,
+    );
+  }
 }
 
 /// @nodoc
@@ -38,22 +45,26 @@ mixin _$AuthActions {
   TResult when<TResult extends Object>({
     @required TResult signInSuccess(String jwt),
     @required TResult signInFailure(String errorMsg),
+    @required TResult updateBioAuth(bool hasBioAuth),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult signInSuccess(String jwt),
     TResult signInFailure(String errorMsg),
+    TResult updateBioAuth(bool hasBioAuth),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult signInSuccess(SignInSuccessAction value),
     @required TResult signInFailure(SignInFailureAction value),
+    @required TResult updateBioAuth(UpdateBioAuthAction value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult signInSuccess(SignInSuccessAction value),
     TResult signInFailure(SignInFailureAction value),
+    TResult updateBioAuth(UpdateBioAuthAction value),
     @required TResult orElse(),
   });
 }
@@ -147,9 +158,11 @@ class _$SignInSuccessAction
   TResult when<TResult extends Object>({
     @required TResult signInSuccess(String jwt),
     @required TResult signInFailure(String errorMsg),
+    @required TResult updateBioAuth(bool hasBioAuth),
   }) {
     assert(signInSuccess != null);
     assert(signInFailure != null);
+    assert(updateBioAuth != null);
     return signInSuccess(jwt);
   }
 
@@ -158,6 +171,7 @@ class _$SignInSuccessAction
   TResult maybeWhen<TResult extends Object>({
     TResult signInSuccess(String jwt),
     TResult signInFailure(String errorMsg),
+    TResult updateBioAuth(bool hasBioAuth),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -172,9 +186,11 @@ class _$SignInSuccessAction
   TResult map<TResult extends Object>({
     @required TResult signInSuccess(SignInSuccessAction value),
     @required TResult signInFailure(SignInFailureAction value),
+    @required TResult updateBioAuth(UpdateBioAuthAction value),
   }) {
     assert(signInSuccess != null);
     assert(signInFailure != null);
+    assert(updateBioAuth != null);
     return signInSuccess(this);
   }
 
@@ -183,6 +199,7 @@ class _$SignInSuccessAction
   TResult maybeMap<TResult extends Object>({
     TResult signInSuccess(SignInSuccessAction value),
     TResult signInFailure(SignInFailureAction value),
+    TResult updateBioAuth(UpdateBioAuthAction value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -275,9 +292,11 @@ class _$SignInFailureAction
   TResult when<TResult extends Object>({
     @required TResult signInSuccess(String jwt),
     @required TResult signInFailure(String errorMsg),
+    @required TResult updateBioAuth(bool hasBioAuth),
   }) {
     assert(signInSuccess != null);
     assert(signInFailure != null);
+    assert(updateBioAuth != null);
     return signInFailure(errorMsg);
   }
 
@@ -286,6 +305,7 @@ class _$SignInFailureAction
   TResult maybeWhen<TResult extends Object>({
     TResult signInSuccess(String jwt),
     TResult signInFailure(String errorMsg),
+    TResult updateBioAuth(bool hasBioAuth),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -300,9 +320,11 @@ class _$SignInFailureAction
   TResult map<TResult extends Object>({
     @required TResult signInSuccess(SignInSuccessAction value),
     @required TResult signInFailure(SignInFailureAction value),
+    @required TResult updateBioAuth(UpdateBioAuthAction value),
   }) {
     assert(signInSuccess != null);
     assert(signInFailure != null);
+    assert(updateBioAuth != null);
     return signInFailure(this);
   }
 
@@ -311,6 +333,7 @@ class _$SignInFailureAction
   TResult maybeMap<TResult extends Object>({
     TResult signInSuccess(SignInSuccessAction value),
     TResult signInFailure(SignInFailureAction value),
+    TResult updateBioAuth(UpdateBioAuthAction value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -330,6 +353,141 @@ abstract class SignInFailureAction implements AuthActions {
 }
 
 /// @nodoc
+abstract class $UpdateBioAuthActionCopyWith<$Res> {
+  factory $UpdateBioAuthActionCopyWith(
+          UpdateBioAuthAction value, $Res Function(UpdateBioAuthAction) then) =
+      _$UpdateBioAuthActionCopyWithImpl<$Res>;
+  $Res call({bool hasBioAuth});
+}
+
+/// @nodoc
+class _$UpdateBioAuthActionCopyWithImpl<$Res>
+    extends _$AuthActionsCopyWithImpl<$Res>
+    implements $UpdateBioAuthActionCopyWith<$Res> {
+  _$UpdateBioAuthActionCopyWithImpl(
+      UpdateBioAuthAction _value, $Res Function(UpdateBioAuthAction) _then)
+      : super(_value, (v) => _then(v as UpdateBioAuthAction));
+
+  @override
+  UpdateBioAuthAction get _value => super._value as UpdateBioAuthAction;
+
+  @override
+  $Res call({
+    Object hasBioAuth = freezed,
+  }) {
+    return _then(UpdateBioAuthAction(
+      hasBioAuth:
+          hasBioAuth == freezed ? _value.hasBioAuth : hasBioAuth as bool,
+    ));
+  }
+}
+
+/// @nodoc
+class _$UpdateBioAuthAction
+    with DiagnosticableTreeMixin
+    implements UpdateBioAuthAction {
+  _$UpdateBioAuthAction({this.hasBioAuth});
+
+  @override
+  final bool hasBioAuth;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthActions.updateBioAuth(hasBioAuth: $hasBioAuth)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthActions.updateBioAuth'))
+      ..add(DiagnosticsProperty('hasBioAuth', hasBioAuth));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is UpdateBioAuthAction &&
+            (identical(other.hasBioAuth, hasBioAuth) ||
+                const DeepCollectionEquality()
+                    .equals(other.hasBioAuth, hasBioAuth)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(hasBioAuth);
+
+  @JsonKey(ignore: true)
+  @override
+  $UpdateBioAuthActionCopyWith<UpdateBioAuthAction> get copyWith =>
+      _$UpdateBioAuthActionCopyWithImpl<UpdateBioAuthAction>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult signInSuccess(String jwt),
+    @required TResult signInFailure(String errorMsg),
+    @required TResult updateBioAuth(bool hasBioAuth),
+  }) {
+    assert(signInSuccess != null);
+    assert(signInFailure != null);
+    assert(updateBioAuth != null);
+    return updateBioAuth(hasBioAuth);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult signInSuccess(String jwt),
+    TResult signInFailure(String errorMsg),
+    TResult updateBioAuth(bool hasBioAuth),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (updateBioAuth != null) {
+      return updateBioAuth(hasBioAuth);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult signInSuccess(SignInSuccessAction value),
+    @required TResult signInFailure(SignInFailureAction value),
+    @required TResult updateBioAuth(UpdateBioAuthAction value),
+  }) {
+    assert(signInSuccess != null);
+    assert(signInFailure != null);
+    assert(updateBioAuth != null);
+    return updateBioAuth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult signInSuccess(SignInSuccessAction value),
+    TResult signInFailure(SignInFailureAction value),
+    TResult updateBioAuth(UpdateBioAuthAction value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (updateBioAuth != null) {
+      return updateBioAuth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateBioAuthAction implements AuthActions {
+  factory UpdateBioAuthAction({bool hasBioAuth}) = _$UpdateBioAuthAction;
+
+  bool get hasBioAuth;
+  @JsonKey(ignore: true)
+  $UpdateBioAuthActionCopyWith<UpdateBioAuthAction> get copyWith;
+}
+
+/// @nodoc
 class _$AuthThunkActionsTearOff {
   const _$AuthThunkActionsTearOff();
 
@@ -340,6 +498,16 @@ class _$AuthThunkActionsTearOff {
       password: password,
     );
   }
+
+// ignore: unused_element
+  BioSignInAction bioSignIn() {
+    return BioSignInAction();
+  }
+
+// ignore: unused_element
+  CheckLocalAuthAvailabilityAction checkBioAuthAvailability() {
+    return CheckLocalAuthAvailabilityAction();
+  }
 }
 
 /// @nodoc
@@ -348,30 +516,34 @@ const $AuthThunkActions = _$AuthThunkActionsTearOff();
 
 /// @nodoc
 mixin _$AuthThunkActions {
-  String get username;
-  String get password;
-
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult signIn(String username, String password),
+    @required TResult bioSignIn(),
+    @required TResult checkBioAuthAvailability(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult signIn(String username, String password),
+    TResult bioSignIn(),
+    TResult checkBioAuthAvailability(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult signIn(SignInAction value),
+    @required TResult bioSignIn(BioSignInAction value),
+    @required
+        TResult checkBioAuthAvailability(
+            CheckLocalAuthAvailabilityAction value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult signIn(SignInAction value),
+    TResult bioSignIn(BioSignInAction value),
+    TResult checkBioAuthAvailability(CheckLocalAuthAvailabilityAction value),
     @required TResult orElse(),
   });
-
-  @JsonKey(ignore: true)
-  $AuthThunkActionsCopyWith<AuthThunkActions> get copyWith;
 }
 
 /// @nodoc
@@ -379,7 +551,6 @@ abstract class $AuthThunkActionsCopyWith<$Res> {
   factory $AuthThunkActionsCopyWith(
           AuthThunkActions value, $Res Function(AuthThunkActions) then) =
       _$AuthThunkActionsCopyWithImpl<$Res>;
-  $Res call({String username, String password});
 }
 
 /// @nodoc
@@ -390,26 +561,13 @@ class _$AuthThunkActionsCopyWithImpl<$Res>
   final AuthThunkActions _value;
   // ignore: unused_field
   final $Res Function(AuthThunkActions) _then;
-
-  @override
-  $Res call({
-    Object username = freezed,
-    Object password = freezed,
-  }) {
-    return _then(_value.copyWith(
-      username: username == freezed ? _value.username : username as String,
-      password: password == freezed ? _value.password : password as String,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class $SignInActionCopyWith<$Res>
-    implements $AuthThunkActionsCopyWith<$Res> {
+abstract class $SignInActionCopyWith<$Res> {
   factory $SignInActionCopyWith(
           SignInAction value, $Res Function(SignInAction) then) =
       _$SignInActionCopyWithImpl<$Res>;
-  @override
   $Res call({String username, String password});
 }
 
@@ -486,8 +644,12 @@ class _$SignInAction with DiagnosticableTreeMixin implements SignInAction {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult signIn(String username, String password),
+    @required TResult bioSignIn(),
+    @required TResult checkBioAuthAvailability(),
   }) {
     assert(signIn != null);
+    assert(bioSignIn != null);
+    assert(checkBioAuthAvailability != null);
     return signIn(username, password);
   }
 
@@ -495,6 +657,8 @@ class _$SignInAction with DiagnosticableTreeMixin implements SignInAction {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult signIn(String username, String password),
+    TResult bioSignIn(),
+    TResult checkBioAuthAvailability(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -508,8 +672,14 @@ class _$SignInAction with DiagnosticableTreeMixin implements SignInAction {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult signIn(SignInAction value),
+    @required TResult bioSignIn(BioSignInAction value),
+    @required
+        TResult checkBioAuthAvailability(
+            CheckLocalAuthAvailabilityAction value),
   }) {
     assert(signIn != null);
+    assert(bioSignIn != null);
+    assert(checkBioAuthAvailability != null);
     return signIn(this);
   }
 
@@ -517,6 +687,8 @@ class _$SignInAction with DiagnosticableTreeMixin implements SignInAction {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult signIn(SignInAction value),
+    TResult bioSignIn(BioSignInAction value),
+    TResult checkBioAuthAvailability(CheckLocalAuthAvailabilityAction value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -530,11 +702,229 @@ class _$SignInAction with DiagnosticableTreeMixin implements SignInAction {
 abstract class SignInAction implements AuthThunkActions {
   factory SignInAction({String username, String password}) = _$SignInAction;
 
-  @override
   String get username;
-  @override
   String get password;
-  @override
   @JsonKey(ignore: true)
   $SignInActionCopyWith<SignInAction> get copyWith;
+}
+
+/// @nodoc
+abstract class $BioSignInActionCopyWith<$Res> {
+  factory $BioSignInActionCopyWith(
+          BioSignInAction value, $Res Function(BioSignInAction) then) =
+      _$BioSignInActionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$BioSignInActionCopyWithImpl<$Res>
+    extends _$AuthThunkActionsCopyWithImpl<$Res>
+    implements $BioSignInActionCopyWith<$Res> {
+  _$BioSignInActionCopyWithImpl(
+      BioSignInAction _value, $Res Function(BioSignInAction) _then)
+      : super(_value, (v) => _then(v as BioSignInAction));
+
+  @override
+  BioSignInAction get _value => super._value as BioSignInAction;
+}
+
+/// @nodoc
+class _$BioSignInAction
+    with DiagnosticableTreeMixin
+    implements BioSignInAction {
+  _$BioSignInAction();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthThunkActions.bioSignIn()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'AuthThunkActions.bioSignIn'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is BioSignInAction);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult signIn(String username, String password),
+    @required TResult bioSignIn(),
+    @required TResult checkBioAuthAvailability(),
+  }) {
+    assert(signIn != null);
+    assert(bioSignIn != null);
+    assert(checkBioAuthAvailability != null);
+    return bioSignIn();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult signIn(String username, String password),
+    TResult bioSignIn(),
+    TResult checkBioAuthAvailability(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (bioSignIn != null) {
+      return bioSignIn();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult signIn(SignInAction value),
+    @required TResult bioSignIn(BioSignInAction value),
+    @required
+        TResult checkBioAuthAvailability(
+            CheckLocalAuthAvailabilityAction value),
+  }) {
+    assert(signIn != null);
+    assert(bioSignIn != null);
+    assert(checkBioAuthAvailability != null);
+    return bioSignIn(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult signIn(SignInAction value),
+    TResult bioSignIn(BioSignInAction value),
+    TResult checkBioAuthAvailability(CheckLocalAuthAvailabilityAction value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (bioSignIn != null) {
+      return bioSignIn(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BioSignInAction implements AuthThunkActions {
+  factory BioSignInAction() = _$BioSignInAction;
+}
+
+/// @nodoc
+abstract class $CheckLocalAuthAvailabilityActionCopyWith<$Res> {
+  factory $CheckLocalAuthAvailabilityActionCopyWith(
+          CheckLocalAuthAvailabilityAction value,
+          $Res Function(CheckLocalAuthAvailabilityAction) then) =
+      _$CheckLocalAuthAvailabilityActionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$CheckLocalAuthAvailabilityActionCopyWithImpl<$Res>
+    extends _$AuthThunkActionsCopyWithImpl<$Res>
+    implements $CheckLocalAuthAvailabilityActionCopyWith<$Res> {
+  _$CheckLocalAuthAvailabilityActionCopyWithImpl(
+      CheckLocalAuthAvailabilityAction _value,
+      $Res Function(CheckLocalAuthAvailabilityAction) _then)
+      : super(_value, (v) => _then(v as CheckLocalAuthAvailabilityAction));
+
+  @override
+  CheckLocalAuthAvailabilityAction get _value =>
+      super._value as CheckLocalAuthAvailabilityAction;
+}
+
+/// @nodoc
+class _$CheckLocalAuthAvailabilityAction
+    with DiagnosticableTreeMixin
+    implements CheckLocalAuthAvailabilityAction {
+  _$CheckLocalAuthAvailabilityAction();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthThunkActions.checkBioAuthAvailability()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'AuthThunkActions.checkBioAuthAvailability'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is CheckLocalAuthAvailabilityAction);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult signIn(String username, String password),
+    @required TResult bioSignIn(),
+    @required TResult checkBioAuthAvailability(),
+  }) {
+    assert(signIn != null);
+    assert(bioSignIn != null);
+    assert(checkBioAuthAvailability != null);
+    return checkBioAuthAvailability();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult signIn(String username, String password),
+    TResult bioSignIn(),
+    TResult checkBioAuthAvailability(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (checkBioAuthAvailability != null) {
+      return checkBioAuthAvailability();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult signIn(SignInAction value),
+    @required TResult bioSignIn(BioSignInAction value),
+    @required
+        TResult checkBioAuthAvailability(
+            CheckLocalAuthAvailabilityAction value),
+  }) {
+    assert(signIn != null);
+    assert(bioSignIn != null);
+    assert(checkBioAuthAvailability != null);
+    return checkBioAuthAvailability(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult signIn(SignInAction value),
+    TResult bioSignIn(BioSignInAction value),
+    TResult checkBioAuthAvailability(CheckLocalAuthAvailabilityAction value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (checkBioAuthAvailability != null) {
+      return checkBioAuthAvailability(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CheckLocalAuthAvailabilityAction implements AuthThunkActions {
+  factory CheckLocalAuthAvailabilityAction() =
+      _$CheckLocalAuthAvailabilityAction;
 }

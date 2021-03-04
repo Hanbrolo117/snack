@@ -9,6 +9,7 @@ SnackAppState authReducer(SnackAppState currentState, action) {
     newState = action.map<SnackAppState>(
       signInSuccess: (successAction) => _handleSignInSuccess(currentState, successAction),
       signInFailure: (failureAction) => _handleSignInFailure(currentState, failureAction),
+      updateBioAuth: (updateAction) => _handleBioAuthUpdate(currentState, updateAction),
     );
   }
 
@@ -24,4 +25,10 @@ SnackAppState _handleSignInSuccess(SnackAppState state, SignInSuccessAction acti
 // TODO: update properly.
 SnackAppState _handleSignInFailure(SnackAppState state, SignInFailureAction action) {
   return state;
+}
+
+SnackAppState _handleBioAuthUpdate(SnackAppState state, UpdateBioAuthAction action) {
+  return state.copyWith.authState.biometrics(
+    hasBiometrics: action.hasBioAuth ?? state.authState.biometrics.hasBiometrics,
+  );
 }
